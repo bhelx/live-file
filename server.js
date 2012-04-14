@@ -42,13 +42,12 @@ function streamData(start, end, callback) {
 
 io = io.listen(server);
 io.sockets.on('connection', function (client){
-  client.send({filename: filename});
   console.log('connected');
   fs.stat(filename, function (err,stats) {
     if (err) throw err;
     var start = (stats.size > backlogSize) ? (stats.size - backlogSize) : 0;
     streamData(start, stats.size, function (lines) {
-      client.emit('message', {tail: lines, topByte: start});
+      client.emit('message', {filename: filename, tail: lines, topByte: start});
     });
   });
 });
