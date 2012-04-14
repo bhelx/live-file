@@ -43,7 +43,9 @@ I have only tested this on Firefox :/
 Contributors
 ============
 
-I borrowed some code from around github but I can't seem to find sources anymore
+I borrowed some code from around github but I can't seem to find all the sources. I know this guy was involved:
+
+[karmi](https://github.com/karmi)
 
 Improvements
 ============
