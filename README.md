@@ -13,10 +13,25 @@ Features
 Install and Run
 ===============
 
-You can install live-file using npm:
+You can install live-file using npm. Be sure to use -g option:
 
 ```
-  npm install live-file
+  npm install live-file -g
 ```
 
+To run, all you need to do is run the command and pass it a file:
+
+```
+  live-file --file /var/log/system.log
+```
+
+Point your browser at http://localhost:8888 to see the results.
+
+You have a few extra options:
+
+```
+  live-file --file /var/log/system.log --port 3000 --backlog 10000
+```
+
+--port is the webserver port and --backlog is the number of bytes to send to the client at a time.
 

@@ -5,7 +5,7 @@
   "author": "Benjamin Eckel bhelx@freenode",
   "description": "Pipe a log file to a browser over websockets. Also provide infinite upward scroll.",
   "bin": {
-    "live-file": "./bin/live-file"
+    "live-file": "./server.js"
   },
   "scripts": {
     "start": "node server.js"
@@ -13,7 +13,7 @@
   "main": "./server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bhelx/live-file.git"
+    "url": "https://bhelx@github.com/bhelx/live-file.git"
   },
   "keywords": [
     "websockets",

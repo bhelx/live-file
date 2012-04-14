@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var http    = require('http'),
     io      = require('socket.io'),
     fs      = require('fs'),
