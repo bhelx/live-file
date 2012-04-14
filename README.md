@@ -25,7 +25,7 @@ To run, all you need to do is run the command and pass it a file:
   live-file --file /var/log/system.log
 ```
 
-Point your browser at http://localhost:8888 to see the results.
+Point your browser at [http://localhost:8888](http://localhost:8888) to see the results.
 
 You have a few extra options:
 
@@ -34,4 +34,20 @@ You have a few extra options:
 ```
 
 --port is the webserver port and --backlog is the number of bytes to send to the client at a time.
+
+Browser Support
+===============
+
+I have only tested this on Firefox :/
+
+Contributors
+============
+
+I borrowed some code from around github but I can't seem to find sources anymore
+
+Improvements
+============
+
+fs#watchFile seems to be kind of slow. I imagine there are better ways to do this now. I might change this soon.
+
 
