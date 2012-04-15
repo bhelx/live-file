@@ -24,7 +24,7 @@
     "optimist":  "*"
   },
   "license": "MIT",
-  "engine": {
-    "node": ">=0.5"
+  "engines": {
+    "node": ">=0.6"
   }
 }
