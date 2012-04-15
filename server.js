@@ -1,24 +1,25 @@
 #!/usr/bin/env node
 
+var argv = require('optimist').argv;
+if (!argv.file) return util.puts("Usage: live-file --file <filename> --port [port=8888] --backlog [backlogSize=8000]");
+
 var http    = require('http'),
     io      = require('socket.io'),
     fs      = require('fs'),
     url     = require('url'),
-    util    = require('util'),
-    argv    = require('optimist').argv;
+    util    = require('util');
 
-if (!argv.file) return util.puts("Usage: live-file --file <filename> --port [port=8888] --backlog [backlogSize=8000]");
-var filename = argv.file;
-var port = argv.port || 8888;
-var backlogSize = argv.backlog || 8000;
+var filename    = argv.file,
+    port        = argv.port || 8888,
+    backlogSize = argv.backlog || 8000;
 
 var server = http.createServer(function (req, res) {
   var query = url.parse(req.url, true).query;
 
   if (query['pivot']) {
     console.log(query);
-    var pivot = query['pivot'];
-    var start = (pivot > backlogSize) ? (pivot - backlogSize) : 0;
+    var pivot = query['pivot'],
+        start = (pivot > backlogSize) ? (pivot - backlogSize) : 0;
     console.log('Reading from ' + start + ' to ' + pivot);
     streamData(start, pivot, function (lines) {
       res.writeHead(200, {'Conent-Type': 'application/json'});
@@ -31,6 +32,7 @@ var server = http.createServer(function (req, res) {
     });
   }
 });
+
 server.listen(port, null);
 
 function streamData(start, end, callback) {
@@ -45,7 +47,7 @@ function streamData(start, end, callback) {
 io = io.listen(server);
 io.sockets.on('connection', function (client){
   console.log('connected');
-  fs.stat(filename, function (err,stats) {
+  fs.stat(filename, function (err, stats) {
     if (err) throw err;
     var start = (stats.size > backlogSize) ? (stats.size - backlogSize) : 0;
     streamData(start, stats.size, function (lines) {
