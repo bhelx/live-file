@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-var argv = require('optimist').argv;
+var argv = require('optimist').argv,
+    util    = require('util');
+
 if (!argv.file) return util.puts("Usage: live-file --file <filename> --port [port=8888] --backlog [backlogSize=8000]");
 
 var http    = require('http'),
     io      = require('socket.io'),
     fs      = require('fs'),
-    url     = require('url'),
-    util    = require('util');
+    url     = require('url');
 
 var filename    = argv.file,
     port        = argv.port || 8888,
