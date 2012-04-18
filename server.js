@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-var argv = require('optimist').argv,
-    util    = require('util');
-
-if (!argv.file) return util.puts("Usage: live-file --file <filename> --port [port=8888] --backlog [backlogSize=8000]");
+var argv = require('optimist')
+  .usage('Usage: live-file --file <filename>')
+  .demand(['file'])
+  .default('port', 8888)
+  .default('backlog', 8000)
+  .argv;
 
 var http    = require('http'),
     io      = require('socket.io'),
@@ -11,8 +13,8 @@ var http    = require('http'),
     url     = require('url');
 
 var filename    = argv.file,
-    port        = argv.port || 8888,
-    backlogSize = argv.backlog || 8000;
+    port        = argv.port,
+    backlogSize = argv.backlog;
 
 var server = http.createServer(function (req, res) {
   var query = url.parse(req.url, true).query;
