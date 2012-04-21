@@ -11,7 +11,7 @@ var LiveFile = function (filename, port, backlog) {
 
     if (query['pivot']) {
       console.log(query);
-      var pivot = query['pivot'],
+      var pivot = parseInt(query['pivot'], 10),
           start = (pivot > backlog) ? (pivot - backlog) : 0;
       console.log('Reading from ' + start + ' to ' + pivot);
       streamData(start, pivot, function (lines) {
