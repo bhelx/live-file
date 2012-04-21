@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var LiveFile = require('..');
+
+var argv = require('optimist')
+    .usage('Usage: live-file --file <filename>')
+    .demand(['file'])
+    .default('port', 8888)
+    .default('backlog', 8000)
+    .argv;
+
+var liveFile = LiveFile(argv.file, argv.port, argv.backlog);
+
+process.on('uncaughtException', function (err) {
+   console.log(err);
+});
