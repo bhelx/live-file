@@ -1,9 +1,10 @@
 {
   "name": "live-file",
   "preferGlobal": "true",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Benjamin Eckel bhelx@freenode",
   "description": "Pipe a log file to a browser over websockets. Also provide infinite upward scroll.",
+  "homepage": "https://github.com/bhelx/live-file",
   "bin": {
     "live-file": "./bin/live-file"
   },
