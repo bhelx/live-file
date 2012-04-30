@@ -35,7 +35,18 @@
       return $tail.height() + scrollPosition == $tail.attr("scrollHeight") - 20;
     }
 
-    $('#tail').scroll(function (event) {
+    function onScroll(cb) {
+      var didScroll = false;
+      $tail.scroll(function () { didScroll = true; });
+      setInterval(function () {
+        if (didScroll) {
+          didScroll = false;
+          cb();
+        }
+      }, 250);
+    }
+
+    onScroll(function () {
       scrollPosition = $tail.scrollTop();
       if (tailHitBottom()) {
         scrollLocked = true;
